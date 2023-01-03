@@ -5,7 +5,10 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    user_id = params[:id].to_i
+    unless user_id == current_user.id
+      redirect_to post_images_path
+    end
   end
 
   def update
